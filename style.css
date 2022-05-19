@@ -1,0 +1,23 @@
+.sizeicon {
+    height: 5rem;
+    width: 5rem;
+}
+
+button {
+    width: 10rem;
+}
+
+#fiveforecast {
+    display: flex;
+
+
+}
+
+.card {
+    padding-left: 2rem;
+    padding-right: 5rem;
+        border: solid .2rem rgb(105, 132, 141) ;
+}
+p {
+    font-size: larger;
+}
