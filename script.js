@@ -2,15 +2,19 @@ $("#search-button").on("click", function() {
     var searchValue = $("#search-value").val()
     console.log(searchValue)
     geoCode(searchValue)
-    localStorage.setItem("cities", JSON.stringify(searchValue))
+    localStorage.setItem("city", searchValue)
     displaySearches()
 })
 
+var history = $("#history")
+
 function displaySearches() {
     var searchArray = JSON.parse (localStorage.getItem ("cities") ) || []
-    searchArray.push(newSearch)
-    var newSearch = $("#search-value").val()
-    appendch
+    searchArray.forEach(function(history){
+        var searchItem = document.createElement("li")
+        searchItem.textContent = history.name + ": " + history
+        searchArray.appendChild(searchItem)
+    })
     }
 
 function geoCode(searchValue) {
@@ -32,7 +36,6 @@ function currentWeather(searchValue, lat, lon) {
     }).then(function (response){
         console.log(response)
 var cityName = $("<h1>").text(searchValue)
-//              (create css class)
 var temp = $("<h2>").addClass("style").text("Temperature: " + response.current.temp)
 var humidity = $("<h2>").text("Humidity: " + response.current.humidity)
 var windSpeed = $("<h2>").text("Wind Speed: " + response.current.wind_speed)
