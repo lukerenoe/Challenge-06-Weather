@@ -2,7 +2,16 @@ $("#search-button").on("click", function() {
     var searchValue = $("#search-value").val()
     console.log(searchValue)
     geoCode(searchValue)
+    localStorage.setItem("cities", JSON.stringify(searchValue))
+    displaySearches()
 })
+
+function displaySearches() {
+    var searchArray = JSON.parse (localStorage.getItem ("cities") ) || []
+    searchArray.push(newSearch)
+    var newSearch = $("#search-value").val()
+    appendch
+    }
 
 function geoCode(searchValue) {
     $.ajax({
@@ -47,15 +56,6 @@ weatherCard.append(cityName, currentDate, temp, humidity, uvi, windSpeed)
         
     })
 }
-
-// function saveSearch() {
-//     var searchArray = JSON.parse (localStorage.getItem ("cities") ) || []
-//     searchArray.push(newSearch)
-//     var newSearch = $("#search-value").val()
-//     localStorage.setItem("cities", JSON.stringify(searchArray))
-//     displaySearches()
-//     console.log (saveSearch())
-//     }
 
 
 function fiveDayForecast(lat, lon) {
